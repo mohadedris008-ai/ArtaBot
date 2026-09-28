@@ -1,0 +1,533 @@
+/* ==========================================================================
+   ARTA — Coming Soon
+   Tokens: graphite/near-black base, warm white text, muted champagne accent.
+   ========================================================================== */
+
+:root {
+  --color-bg: #0b0b0c;
+  --color-bg-deep: #060607;
+  --color-surface: rgba(255, 255, 255, 0.035);
+  --color-surface-strong: rgba(255, 255, 255, 0.055);
+  --color-border: rgba(255, 255, 255, 0.09);
+  --color-border-soft: rgba(255, 255, 255, 0.06);
+  --color-text: #ece9e2;
+  --color-text-dim: rgba(236, 233, 226, 0.62);
+  --color-text-faint: rgba(236, 233, 226, 0.38);
+  --color-accent: #b7a077;
+  --color-accent-soft: rgba(183, 160, 119, 0.5);
+  --color-focus: #cbb98c;
+
+  --font-body: "Vazirmatn", "Segoe UI", Tahoma, sans-serif;
+
+  --space-1: 0.5rem;
+  --space-2: 0.875rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --space-5: 4rem;
+  --space-6: 6.5rem;
+
+  --radius-s: 10px;
+  --radius-m: 16px;
+  --radius-l: 22px;
+
+  --ease-glass: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: env(safe-area-inset-top, 0px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  direction: rtl;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  position: relative;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(183, 160, 119, 0.28);
+  color: #fff;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}
+
+:focus-visible {
+  outline: 1.5px solid var(--color-focus);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* --------------------------------------------------------------------------
+   Atmosphere — near-black architectural backdrop, extremely slow movement
+   -------------------------------------------------------------------------- */
+
+.atmosphere {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% -10%, rgba(255,255,255,0.05), transparent 60%),
+    linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-deep) 100%);
+}
+
+.atmosphere__plane {
+  position: absolute;
+  width: 140%;
+  height: 140%;
+  left: -20%;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.5;
+  will-change: transform;
+}
+
+.atmosphere__plane--one {
+  top: -60%;
+  background: radial-gradient(circle at 50% 50%, rgba(183, 160, 119, 0.07), transparent 65%);
+  animation: drift-one 48s ease-in-out infinite;
+}
+
+.atmosphere__plane--two {
+  bottom: -70%;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.045), transparent 60%);
+  animation: drift-two 60s ease-in-out infinite;
+}
+
+@keyframes drift-one {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(4%, 3%) scale(1.06); }
+}
+
+@keyframes drift-two {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-3%, -4%) scale(1.05); }
+}
+
+.atmosphere__grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+/* --------------------------------------------------------------------------
+   Header
+   -------------------------------------------------------------------------- */
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--space-3) var(--space-3) 0;
+}
+
+.wordmark {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--color-text);
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  color: var(--color-text-dim);
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--color-border-soft);
+  border-radius: 999px;
+  background: var(--color-surface);
+}
+
+.status-pill__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(183, 160, 119, 0.15);
+  animation: pulse-dot 3.6s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+/* --------------------------------------------------------------------------
+   Hero
+   -------------------------------------------------------------------------- */
+
+.hero {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-3) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 var(--space-3);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-accent);
+  letter-spacing: 0.02em;
+  opacity: 0;
+  animation: rise 0.9s var(--ease-glass) 0.1s forwards;
+}
+
+.headline {
+  margin: 0 0 var(--space-3);
+  font-size: clamp(1.9rem, 5.2vw, 3.1rem);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: #fff;
+  opacity: 0;
+  animation: rise 1s var(--ease-glass) 0.22s forwards;
+}
+
+.subline {
+  margin: 0 0 var(--space-5);
+  max-width: 30em;
+  font-size: 1.05rem;
+  font-weight: 400;
+  line-height: 1.9;
+  color: var(--color-text-dim);
+  opacity: 0;
+  animation: rise 1s var(--ease-glass) 0.36s forwards;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --------------------------------------------------------------------------
+   Countdown — refined crystal tiles
+   -------------------------------------------------------------------------- */
+
+.countdown {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+  opacity: 0;
+  animation: rise 1s var(--ease-glass) 0.5s forwards;
+}
+
+.countdown__unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  width: 5.2rem;
+  height: 5.2rem;
+  border-radius: var(--radius-m);
+  background:
+    linear-gradient(155deg, rgba(255,255,255,0.06), rgba(255,255,255,0.015) 55%);
+  border: 1px solid var(--color-border);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.07),
+    inset 0 -12px 18px -14px rgba(0,0,0,0.5),
+    0 14px 30px -18px rgba(0,0,0,0.65);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.countdown__value {
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: #fff;
+  line-height: 1;
+}
+
+.countdown__label {
+  font-size: 0.68rem;
+  color: var(--color-text-faint);
+}
+
+.countdown__sep {
+  color: var(--color-text-faint);
+  font-size: 1rem;
+  transform: translateY(-0.6rem);
+}
+
+/* --------------------------------------------------------------------------
+   Whisper / curiosity lines
+   -------------------------------------------------------------------------- */
+
+.whisper {
+  margin: 0 0 var(--space-1);
+  font-size: 0.9rem;
+  color: var(--color-text-faint);
+  letter-spacing: 0.03em;
+}
+
+.curiosity {
+  margin: 0 0 var(--space-5);
+  font-size: 0.95rem;
+  color: var(--color-text-dim);
+  min-height: 1.4em;
+  transition: opacity 0.6s var(--ease-glass);
+}
+
+.curiosity.is-fading {
+  opacity: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Reminder card — the single bold material moment
+   -------------------------------------------------------------------------- */
+
+.reminder-card {
+  width: 100%;
+  max-width: 460px;
+  padding: var(--space-4) var(--space-4);
+  border-radius: var(--radius-l);
+  background:
+    linear-gradient(165deg, rgba(255,255,255,0.05), rgba(255,255,255,0.012) 60%),
+    var(--color-bg);
+  border: 1px solid var(--color-border);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.06),
+    0 30px 60px -30px rgba(0,0,0,0.75);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.reminder-card h2 {
+  margin: 0 0 0.6rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.reminder-card__desc {
+  margin: 0 0 var(--space-3);
+  font-size: 0.92rem;
+  line-height: 1.8;
+  color: var(--color-text-dim);
+}
+
+.phone-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.phone-field {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0 0.3rem;
+  border-radius: var(--radius-s);
+  border: 1px solid var(--color-border);
+  background: rgba(0, 0, 0, 0.25);
+  transition: border-color 0.35s var(--ease-glass), box-shadow 0.35s var(--ease-glass);
+}
+
+.phone-field:focus-within {
+  border-color: var(--color-accent-soft);
+  box-shadow: 0 0 0 3px rgba(183, 160, 119, 0.12);
+}
+
+.phone-field__prefix {
+  flex: none;
+  padding: 0.9rem 0.4rem 0.9rem 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text-dim);
+  border-left: 1px solid var(--color-border-soft);
+  padding-left: 0.75rem;
+}
+
+.phone-field__input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.9rem 0.4rem;
+  background: transparent;
+  border: none;
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: 0.98rem;
+  direction: ltr;
+  text-align: right;
+  unicode-bidi: plaintext;
+}
+
+.phone-field__input::placeholder {
+  color: var(--color-text-faint);
+  direction: rtl;
+}
+
+.phone-field__input:focus {
+  outline: none;
+}
+
+.submit-btn {
+  padding: 0.95rem 1.5rem;
+  border-radius: var(--radius-s);
+  border: 1px solid var(--color-accent-soft);
+  background: linear-gradient(180deg, rgba(183,160,119,0.16), rgba(183,160,119,0.06));
+  color: #f3ead9;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.25s var(--ease-glass), box-shadow 0.25s var(--ease-glass), background 0.25s var(--ease-glass);
+}
+
+.submit-btn:hover {
+  box-shadow: 0 10px 24px -12px rgba(183, 160, 119, 0.4);
+  background: linear-gradient(180deg, rgba(183,160,119,0.22), rgba(183,160,119,0.09));
+}
+
+.submit-btn:active {
+  transform: translateY(1px);
+}
+
+.phone-feedback {
+  min-height: 1.2em;
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--color-text-faint);
+}
+
+.phone-feedback[data-state="error"] {
+  color: #d99a8a;
+}
+
+.phone-feedback[data-state="ok"] {
+  color: #a9c7a1;
+}
+
+/* --------------------------------------------------------------------------
+   Success state
+   -------------------------------------------------------------------------- */
+
+.success-state {
+  text-align: center;
+  animation: rise 0.7s var(--ease-glass) forwards;
+}
+
+.success-state__title {
+  margin: 0 0 0.35rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.success-state__desc {
+  margin: 0 0 var(--space-3);
+  font-size: 0.9rem;
+  color: var(--color-text-dim);
+}
+
+.secondary-actions {
+  display: flex;
+  gap: var(--space-2);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.secondary-actions__link {
+  font-size: 0.82rem;
+  color: var(--color-text-dim);
+  text-decoration: none;
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--color-border-soft);
+  border-radius: 999px;
+  transition: color 0.3s var(--ease-glass), border-color 0.3s var(--ease-glass);
+}
+
+.secondary-actions__link:hover {
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+
+.site-footer {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--space-3);
+  text-align: center;
+}
+
+.site-footer p {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--color-text-faint);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 480px) {
+  .hero {
+    padding-top: var(--space-5);
+  }
+
+  .countdown {
+    gap: 0.5rem;
+  }
+
+  .countdown__unit {
+    width: 4.1rem;
+    height: 4.1rem;
+    border-radius: var(--radius-s);
+  }
+
+  .countdown__value {
+    font-size: 1.2rem;
+  }
+
+  .countdown__label {
+    font-size: 0.6rem;
+  }
+
+  .reminder-card {
+    padding: var(--space-3);
+  }
+
+  .site-header {
+    padding: var(--space-2) var(--space-2) 0;
+  }
+}

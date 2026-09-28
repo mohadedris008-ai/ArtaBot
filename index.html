@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>آرتا | چیزی فراتر از انتظار، در راه است</title>
+<meta name="description" content="آرتا در حال آماده‌سازی تجربه‌ای متفاوت است. کمی دیگر...">
+<meta property="og:title" content="آرتا | چیزی فراتر از انتظار، در راه است">
+<meta property="og:description" content="آرتا در حال آماده‌سازی تجربه‌ای متفاوت است. کمی دیگر...">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fa_AF">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="atmosphere" aria-hidden="true">
+  <div class="atmosphere__plane atmosphere__plane--one"></div>
+  <div class="atmosphere__plane atmosphere__plane--two"></div>
+  <div class="atmosphere__grain"></div>
+</div>
+
+<header class="site-header">
+  <span class="wordmark">آرتا</span>
+  <span class="status-pill">
+    <span class="status-pill__dot" aria-hidden="true"></span>
+    در حال آماده‌سازی
+  </span>
+</header>
+
+<main class="hero">
+  <p class="eyebrow">یک اتفاق متفاوت در راه است</p>
+
+  <h1 class="headline">چیزی فراتر از انتظار،<br>در راه است.</h1>
+
+  <p class="subline">آرتا در حال آماده‌سازی تجربه‌ای است که ارزش انتظار را دارد.</p>
+
+  <section class="countdown" aria-label="شمارش معکوس تا آغاز">
+    <div class="countdown__unit">
+      <span class="countdown__value" id="cd-days">۰۷</span>
+      <span class="countdown__label">روز</span>
+    </div>
+    <span class="countdown__sep" aria-hidden="true">:</span>
+    <div class="countdown__unit">
+      <span class="countdown__value" id="cd-hours">۰۷</span>
+      <span class="countdown__label">ساعت</span>
+    </div>
+    <span class="countdown__sep" aria-hidden="true">:</span>
+    <div class="countdown__unit">
+      <span class="countdown__value" id="cd-minutes">۰۹</span>
+      <span class="countdown__label">دقیقه</span>
+    </div>
+    <span class="countdown__sep" aria-hidden="true">:</span>
+    <div class="countdown__unit">
+      <span class="countdown__value" id="cd-seconds">۲۰</span>
+      <span class="countdown__label">ثانیه</span>
+    </div>
+  </section>
+
+  <p class="whisper">کمی دیگر...</p>
+
+  <p class="curiosity" id="curiosity-line">هنوز چیزی برای گفتن نداریم.</p>
+
+  <section class="reminder-card" aria-labelledby="reminder-heading">
+    <h2 id="reminder-heading">می‌خواهید اولین نفر باشید؟</h2>
+    <p class="reminder-card__desc">شماره‌تان را ثبت کنید تا هنگام آغاز، به شما اطلاع بدهیم.</p>
+
+    <form id="reminder-form" class="phone-form" novalidate>
+      <div class="phone-field">
+        <span class="phone-field__prefix" aria-hidden="true">۹۳+</span>
+        <input
+          type="tel"
+          inputmode="numeric"
+          id="phone-input"
+          name="phone"
+          class="phone-field__input"
+          placeholder="شماره تماس خود را وارد کنید"
+          aria-label="شماره تماس افغانستان"
+          aria-describedby="phone-feedback"
+          autocomplete="tel-national"
+        >
+      </div>
+      <button type="submit" class="submit-btn">
+        <span>به من یادآوری کن</span>
+      </button>
+      <p id="phone-feedback" class="phone-feedback" role="status" aria-live="polite"></p>
+    </form>
+
+    <div id="success-state" class="success-state" hidden>
+      <p class="success-state__title">ثبت شد.</p>
+      <p class="success-state__desc">هنگام آغاز، به شما اطلاع خواهیم داد.</p>
+      <div class="secondary-actions">
+        <a id="whatsapp-link" href="#" class="secondary-actions__link" target="_blank" rel="noopener">ادامه در واتساپ</a>
+        <a id="telegram-link" href="#" class="secondary-actions__link" target="_blank" rel="noopener">ادامه در تلگرام</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>آرتا — به‌زودی</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
