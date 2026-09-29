@@ -1,108 +1,178 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>آرتا | چیزی فراتر از انتظار، در راه است</title>
-<meta name="description" content="آرتا در حال آماده‌سازی تجربه‌ای متفاوت است. کمی دیگر...">
-<meta property="og:title" content="آرتا | چیزی فراتر از انتظار، در راه است">
-<meta property="og:description" content="آرتا در حال آماده‌سازی تجربه‌ای متفاوت است. کمی دیگر...">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="fa_AF">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>آرتا · به‌زودی</title>
+  <meta name="description" content="آرتا به‌زودی رونمایی می‌کند. چیزی در حال شکل‌گرفتن است — اولین نفری باشید که خبردار می‌شود.">
+  <meta name="theme-color" content="#0C0A09">
+  <meta name="color-scheme" content="dark">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Arta">
+  <meta property="og:title" content="آرتا · به‌زودی | Arta · Coming Soon">
+  <meta property="og:description" content="چیزی در حال شکل‌گرفتن است. Something remarkable is taking shape.">
+  <meta property="og:locale" content="fa_IR">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Arta · Coming Soon">
+  <meta name="twitter:description" content="Something remarkable is taking shape.">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E %3Cdefs%3E %3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E %3Cstop offset='0' stop-color='#F5D67A'/%3E %3Cstop offset='.5' stop-color='#CA8A04'/%3E %3Cstop offset='1' stop-color='#8A5A00'/%3E %3C/linearGradient%3E %3C/defs%3E %3Crect width='64' height='64' rx='14' fill='#0C0A09'/%3E %3Crect x='1' y='1' width='62' height='62' rx='13' fill='none' stroke='url%28#g%29' stroke-opacity='.35' stroke-width='1.5'/%3E %3Cpath d='M32 13 L49 51 M32 13 L15 51 M22.5 37 H41.5' fill='none' stroke='url%28#g%29' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'/%3E %3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;600&family=Montserrat:wght@300;400;500;600&family=Vazirmatn:wght@200;300;400;500;600&display=swap">
+  <link rel="stylesheet" href="style.css">
+
+  <script>
+    // Runs before first paint: enable JS-only states and apply the saved language.
+    (function () {
+      var d = document.documentElement, lang = 'fa';
+      d.classList.add('js');
+      try {
+        var q = new URLSearchParams(location.search).get('lang');
+        lang = q === 'en' || q === 'fa' ? q : (localStorage.getItem('arta-lang') || 'fa');
+      } catch (e) {}
+      if (lang === 'en') { d.lang = 'en'; d.dir = 'ltr'; }
+      // Failsafe: never leave the curtain closed if script.js can't load.
+      setTimeout(function () { d.classList.add('is-ready', 'is-settled'); }, 4500);
+    })();
+  </script>
+  <script src="script.js" defer></script>
 </head>
 <body>
+  <!-- Intro curtain -->
+  <div class="curtain" aria-hidden="true">
+    <div class="curtain__half curtain__half--top"></div>
+    <div class="curtain__half curtain__half--bottom"></div>
+    <div class="curtain__line"></div>
+  </div>
 
-<div class="atmosphere" aria-hidden="true">
-  <div class="atmosphere__plane atmosphere__plane--one"></div>
-  <div class="atmosphere__plane atmosphere__plane--two"></div>
-  <div class="atmosphere__grain"></div>
-</div>
+  <!-- Ambient layers -->
+  <canvas class="dust" aria-hidden="true"></canvas>
+  <div class="aura" aria-hidden="true"></div>
+  <div class="glow" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="flash" aria-hidden="true"></div>
+  <div class="cursor" aria-hidden="true"></div>
 
-<header class="site-header">
-  <span class="wordmark">آرتا</span>
-  <span class="status-pill">
-    <span class="status-pill__dot" aria-hidden="true"></span>
-    در حال آماده‌سازی
-  </span>
-</header>
-
-<main class="hero">
-  <p class="eyebrow">یک اتفاق متفاوت در راه است</p>
-
-  <h1 class="headline">چیزی فراتر از انتظار،<br>در راه است.</h1>
-
-  <p class="subline">آرتا در حال آماده‌سازی تجربه‌ای است که ارزش انتظار را دارد.</p>
-
-  <section class="countdown" aria-label="شمارش معکوس تا آغاز">
-    <div class="countdown__unit">
-      <span class="countdown__value" id="cd-days">۰۷</span>
-      <span class="countdown__label">روز</span>
-    </div>
-    <span class="countdown__sep" aria-hidden="true">:</span>
-    <div class="countdown__unit">
-      <span class="countdown__value" id="cd-hours">۰۷</span>
-      <span class="countdown__label">ساعت</span>
-    </div>
-    <span class="countdown__sep" aria-hidden="true">:</span>
-    <div class="countdown__unit">
-      <span class="countdown__value" id="cd-minutes">۰۹</span>
-      <span class="countdown__label">دقیقه</span>
-    </div>
-    <span class="countdown__sep" aria-hidden="true">:</span>
-    <div class="countdown__unit">
-      <span class="countdown__value" id="cd-seconds">۲۰</span>
-      <span class="countdown__label">ثانیه</span>
-    </div>
-  </section>
-
-  <p class="whisper">کمی دیگر...</p>
-
-  <p class="curiosity" id="curiosity-line">هنوز چیزی برای گفتن نداریم.</p>
-
-  <section class="reminder-card" aria-labelledby="reminder-heading">
-    <h2 id="reminder-heading">می‌خواهید اولین نفر باشید؟</h2>
-    <p class="reminder-card__desc">شماره‌تان را ثبت کنید تا هنگام آغاز، به شما اطلاع بدهیم.</p>
-
-    <form id="reminder-form" class="phone-form" novalidate>
-      <div class="phone-field">
-        <span class="phone-field__prefix" aria-hidden="true">۹۳+</span>
-        <input
-          type="tel"
-          inputmode="numeric"
-          id="phone-input"
-          name="phone"
-          class="phone-field__input"
-          placeholder="شماره تماس خود را وارد کنید"
-          aria-label="شماره تماس افغانستان"
-          aria-describedby="phone-feedback"
-          autocomplete="tel-national"
-        >
+  <div class="page">
+    <header class="topbar">
+      <div class="brand" aria-label="Arta" role="img">
+        <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+          <defs>
+            <linearGradient id="brandGold" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#F5D67A"/>
+              <stop offset=".5" stop-color="#CA8A04"/>
+              <stop offset="1" stop-color="#8A5A00"/>
+            </linearGradient>
+          </defs>
+          <path pathLength="100" d="M32 10 L51 54 M32 10 L13 54 M21.5 38 H42.5" fill="none" stroke="url(#brandGold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="brand__word" aria-hidden="true"><span style="--i:0">A</span><span style="--i:1">R</span><span style="--i:2">T</span><span style="--i:3">A</span></span>
       </div>
-      <button type="submit" class="submit-btn">
-        <span>به من یادآوری کن</span>
-      </button>
-      <p id="phone-feedback" class="phone-feedback" role="status" aria-live="polite"></p>
-    </form>
 
-    <div id="success-state" class="success-state" hidden>
-      <p class="success-state__title">ثبت شد.</p>
-      <p class="success-state__desc">هنگام آغاز، به شما اطلاع خواهیم داد.</p>
-      <div class="secondary-actions">
-        <a id="whatsapp-link" href="#" class="secondary-actions__link" target="_blank" rel="noopener">ادامه در واتساپ</a>
-        <a id="telegram-link" href="#" class="secondary-actions__link" target="_blank" rel="noopener">ادامه در تلگرام</a>
+      <div class="lang" role="group" aria-label="Language / زبان" dir="ltr">
+        <span class="lang__pill" aria-hidden="true"></span>
+        <button type="button" class="lang__btn" data-lang="fa" lang="fa" aria-pressed="true">فارسی</button>
+        <button type="button" class="lang__btn" data-lang="en" lang="en" aria-pressed="false">EN</button>
       </div>
-    </div>
-  </section>
-</main>
+    </header>
 
-<footer class="site-footer">
-  <p>آرتا — به‌زودی</p>
-</footer>
+    <main class="hero">
+      <p class="eyebrow" data-reveal data-swap style="--d:0">
+        <span class="eyebrow__line" aria-hidden="true"></span>
+        <span data-i18n="eyebrow">به‌زودی</span>
+        <span class="eyebrow__line" aria-hidden="true"></span>
+      </p>
 
-<script src="script.js"></script>
+      <h1 class="title" data-i18n="title">چیزی در حال شکل‌گرفتن است.</h1>
+
+      <p class="lede" data-i18n="lede" data-reveal data-swap style="--d:3">
+        ماه‌ها در سکوت ساختیم؛ با دقتی که فقط وقتی ببینیدش، معنایش را می‌فهمید. آرتا به‌زودی پرده برمی‌دارد — و می‌خواهیم شما جزو اولین‌ها باشید.
+      </p>
+
+      <section class="countdown" aria-labelledby="cd-caption" data-reveal data-swap style="--d:4">
+        <p class="countdown__caption" id="cd-caption">
+          <span class="pulse" aria-hidden="true"></span>
+          <span data-i18n="caption">تا لحظه‌ی رونمایی</span>
+        </p>
+
+        <div class="countdown__grid">
+          <div class="unit" data-unit="days" style="--i:0">
+            <svg class="unit__ring" aria-hidden="true"><rect pathLength="100" x="0" y="0" width="100%" height="100%" rx="20" ry="20"/></svg>
+            <span class="unit__spot" aria-hidden="true"></span>
+            <span class="unit__value" aria-hidden="true">۱۰</span>
+            <span class="unit__label" data-i18n="days">روز</span>
+          </div>
+          <div class="unit" data-unit="hours" style="--i:1">
+            <svg class="unit__ring" aria-hidden="true"><rect pathLength="100" x="0" y="0" width="100%" height="100%" rx="20" ry="20"/></svg>
+            <span class="unit__spot" aria-hidden="true"></span>
+            <span class="unit__value" aria-hidden="true">۰۰</span>
+            <span class="unit__label" data-i18n="hours">ساعت</span>
+          </div>
+          <div class="unit" data-unit="minutes" style="--i:2">
+            <svg class="unit__ring" aria-hidden="true"><rect pathLength="100" x="0" y="0" width="100%" height="100%" rx="20" ry="20"/></svg>
+            <span class="unit__spot" aria-hidden="true"></span>
+            <span class="unit__value" aria-hidden="true">۰۰</span>
+            <span class="unit__label" data-i18n="minutes">دقیقه</span>
+          </div>
+          <div class="unit" data-unit="seconds" style="--i:3">
+            <svg class="unit__ring" aria-hidden="true"><rect pathLength="100" x="0" y="0" width="100%" height="100%" rx="20" ry="20"/></svg>
+            <span class="unit__spot" aria-hidden="true"></span>
+            <span class="unit__value" aria-hidden="true">۰۰</span>
+            <span class="unit__label" data-i18n="seconds">ثانیه</span>
+          </div>
+        </div>
+
+        <p class="sr-only" id="cd-summary" aria-live="polite"></p>
+
+        <div class="journey">
+          <div class="journey__meta">
+            <span data-i18n="journey">مسیر تا افتتاح</span>
+            <span class="journey__pct" data-journey-pct>—</span>
+          </div>
+          <div class="journey__track" aria-hidden="true">
+            <div class="journey__fill"></div>
+            <span class="journey__head"></span>
+          </div>
+        </div>
+      </section>
+
+      <div class="actions" data-reveal data-swap style="--d:5">
+        <a class="cta" data-cta data-magnetic href="https://wa.me/93728000690" target="_blank" rel="noopener">
+          <span class="cta__shine" aria-hidden="true"></span>
+          <span class="cta__inner">
+            <svg class="cta__icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+            <span class="cta__label" data-i18n="cta">وقتی تمام شد، خبرم کن</span>
+            <svg class="cta__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+
+        <button class="ghost" type="button" data-share data-magnetic>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7M16 6l-4-4-4 4M12 2v13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span data-i18n="share">اشتراک‌گذاری</span>
+        </button>
+      </div>
+
+      <p class="hint" data-i18n="hint" data-reveal data-swap style="--d:6">بدون ثبت‌نام — فقط یک پیام در واتساپ، و اولین نفری خواهید بود که خبردار می‌شود.</p>
+    </main>
+
+    <footer class="footer" data-reveal data-swap style="--d:7">
+      <p class="footer__date">
+        <span data-i18n="unveil">رونمایی</span>
+        <span class="footer__dot" aria-hidden="true"></span>
+        <time datetime="2026-10-09T12:00:00+04:30" data-launch-date>جمعه ۱۷ میزان ۱۴۰۵ · ۱۲:۰۰ به وقت کابل</time>
+      </p>
+      <p class="footer__rights" data-i18n="rights">© ۲۰۲۶ آرتا — تمامی حقوق محفوظ است.</p>
+    </footer>
+  </div>
+
+  <div class="toast" role="status" aria-live="polite"></div>
+
+  <noscript>
+    <style>.curtain,.dust,.cursor{display:none}</style>
+  </noscript>
 </body>
 </html>

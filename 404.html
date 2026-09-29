@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>آرتا</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0C0A09">
+  <style>body{margin:0;min-height:100vh;background:#0C0A09}</style>
+  <script>
+    // Send any unknown address back to the home page.
+    // Works on a custom domain (/) and on username.github.io/repo-name/.
+    (function () {
+      var base = '/';
+      if (/\.github\.io$/.test(location.hostname)) {
+        var first = location.pathname.split('/')[1];
+        if (first) base = '/' + first + '/';
+      }
+      location.replace(base);
+    })();
+  </script>
+</head>
+<body></body>
+</html>
