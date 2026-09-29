@@ -38,6 +38,14 @@
   --radius: 20px;
   --gap: clamp(0.5rem, 2.2vw, 1.25rem);
   --gutter: clamp(16px, 4.5vw, 48px);
+
+  /* The page is already dark: stop browsers (Samsung Internet, Chrome auto-dark)
+     from re-colouring it, which turns the gold into a muddy red. */
+  color-scheme: only dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root { color-scheme: only dark; }
 }
 
 html[lang="en"] {
@@ -437,14 +445,11 @@ html[lang="en"] .title {
 }
 
 .title .gold {
-  /* Only bright golds, so the word stays luminous at any point of the shimmer */
-  color: #F2C94C;
-  background: linear-gradient(110deg, #E9B42C 0%, #F5D67A 25%, #FFF3CC 50%, #F5D67A 75%, #E9B42C 100%);
+  background: var(--gold-grad);
   background-size: 250% 100%;
-  background-position: 50% 0;
   -webkit-background-clip: text;
   background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: transparent;
   animation: gold-flow 7s linear infinite;
 }
 html[lang="en"] .title .gold { font-style: italic; }
@@ -944,10 +949,5 @@ html[lang="en"] .hint { font-size: 0.8rem; line-height: 1.7; }
   .cursor,
   .cta__shine,
   .journey__head::after { display: none; }
-  /* Animations off (e.g. phone setting): hold the word in a bright, static gold */
-  .title .gold,
-  .js.is-ready .title .w__i.gold {
-    animation: word-up 1ms forwards !important;
-    background-position: 50% 0 !important;
-  }
+  .title .gold { background-position: 50% 0; }
 }
